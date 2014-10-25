@@ -37,9 +37,25 @@ body{
     float: left;
 }
 #add_blip_form {
+    background-color: #ffffff;
+    z-index: 2000;
     display: none;
-    margin-left: 100px;
-    width: 300px;
+    position: absolute;
+    width: 500px;
+    padding: 30px;
+    top: 200px;
+    left: 200px;
+    border-radius: 20px;
+}
+§
+.cover {
+    position: absolute;
+    background-color: #000000;
+    display: none;
+    opacity: 0.4;
+    z-index: 1000;
+    width: 1500px;
+    height: 1000px;
 }
 
 #more_info {
