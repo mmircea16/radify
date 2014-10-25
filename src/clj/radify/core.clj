@@ -8,6 +8,7 @@
 
 (def app
   (-> (handler/site routes/app-routes)
+      (ring-middleware/wrap-json-body)
       (ring-middleware/wrap-json-response)))
 
 (defn -main []
