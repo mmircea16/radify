@@ -36,9 +36,10 @@ radar.blips = function() {
            return blip_view_models;
         },
 
-        create_blip: function(blip_name, tier_id, segment_id){
+        create_blip: function(blip_name, blip_description, tier_id, segment_id){
             var blip = {
                 name: blip_name,
+                description: blip_description,
                 tier: tier_id,
                 segment: segment_id
             };
