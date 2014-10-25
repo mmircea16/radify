@@ -1,6 +1,6 @@
 var radar = radar || {};
 
-radar.data_store = function () {
+radar.data_store = (function () {
 
     function get_data() {
         var deferred = Q.defer();
@@ -36,4 +36,4 @@ radar.data_store = function () {
         }
     }
 
-};
+})();

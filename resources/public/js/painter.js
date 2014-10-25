@@ -110,7 +110,7 @@ radar.painter = (function() {
         draw_blip_at(relative_to_center_x, relative_to_center_y);
 //        var blip_view_model = radar.blips().create_blip(tier, segment);
 
-        console.log(segment);
+//        console.log(segment);
 //        console.log(relative_to_center_x + "   " + relative_to_center_y);
     }
 

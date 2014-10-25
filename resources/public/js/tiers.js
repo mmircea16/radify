@@ -26,7 +26,7 @@ radar.tiers = function () {
     var PREVIOUS_RADIX = [0, 100, 200, 300];
     var COLORS = ['red', 'blue', 'yellow', 'green'];
 
-    var tiers = radar.data_store().get_tiers();
+    var tiers = radar.data_store.get_tiers();
 
     return {
         get_all: get_all,

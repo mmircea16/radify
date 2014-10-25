@@ -18,7 +18,7 @@ radar.blips = function() {
     return {
         get_all: function () {
 
-           var blips = radar.data_store().get_blips();
+           var blips = radar.data_store.get_blips();
 
            var blip_view_models = blips.map(function(blip_data) {
                var tier = radar.tiers().get_by_id(blip_data.tier);

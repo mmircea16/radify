@@ -2,7 +2,7 @@ var radar = radar || {};
 radar.segments = function () {
 
     function get_all() {
-        var segments = radar.data_store().get_segments();
+        var segments = radar.data_store.get_segments();
 
         var delta_angle = Math.PI * 2 / segments.length;
         var start_angles = d3.range(0, Math.PI*2, delta_angle);
