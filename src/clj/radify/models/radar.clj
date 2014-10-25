@@ -12,7 +12,16 @@
                      :name "languages"}]
         :tiers [{:id 1
                  :name "hold"
-                 :description "something"}]
+                 :description "something"}
+                 {:id 2
+                  :name "assess"
+                  :description "something"}
+                 {:id 3
+                  :name "trial"
+                  :description "something"}
+                 {:id 4
+                  :name "adopt"
+                  :description "something"}  ]
     }
   :blips [{:id 1
            :name "clojure lang"
