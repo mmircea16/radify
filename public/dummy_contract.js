@@ -1,0 +1,20 @@
+var data = {
+  id: "something",
+  name: "name of the radar" ,
+  description: "description of the radar",
+  template: {
+    id: "some-id",
+    segments: [{id:"techniques", name:"techniques"}, {id:"languages", name:"languages"}],
+    tiers: [{id:"hold", name:"hold", description: "something"}, {id:"assess", name:"assess", description: "something"}, {id:"assess", name:"assess", description: "something"}]
+  },
+  blips: [
+    {
+      id: "some-blip-id",
+      name: "clojure",
+      description: "some cool language",
+
+      segment: "id-segment",
+      tier: "id-tier"
+    }
+  ]
+};

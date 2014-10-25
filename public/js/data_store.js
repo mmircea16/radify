@@ -18,8 +18,13 @@ radar.data_store = function () {
         });
     }
 
+    function get_dummy_data() {
+        return data;
+    }
+
     return {
-        get_template: function(){
+        get_tiers: function(){
+            return get_dummy_data().template.tiers;
         }
     }
 
