@@ -6,8 +6,12 @@ radar.data_store = (function () {
 
     var data_retrieved_callback;
 
+    function get_radar_id () {
+        return location.href.split('id=')[1]
+    }
+
     function start_retrieving_data() {
-        $.getJSON("/api/radar/1", "", function(response){
+        $.getJSON("/api/radar/"+get_radar_id(), "", function(response){
             data = response;
             data_retrieved_callback();
         });
