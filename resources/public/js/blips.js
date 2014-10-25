@@ -3,11 +3,11 @@ var radar = radar || {};
 radar.blips = function() {
 
     function get_coordinates_for_tier(blip_name, tier, segment) {
-        var radius = tier.radius - Math.floor(radar.utils.hash_string_to_int(blip_name) * tier.tickness);
+        var radius = tier.radius - Math.floor(radar.utils.hash_string_to_0_1(blip_name) * tier.tickness);
 
         var delta_angle = segment.end_angle - segment.start_angle;
 
-        var angle = radar.utils.hash_string_to_int(blip_name) * delta_angle + segment.start_angle;
+        var angle = radar.utils.hash_string_to_0_1(blip_name) * delta_angle + segment.start_angle;
 
         return {
             x: radius * Math.cos(angle),
@@ -46,8 +46,12 @@ radar.blips = function() {
         },
 
         create_blip: function(blip_name, blip_description, tier_id, segment_id){
+            var id = radar.utils.hash_string_to_int(blip_name + blip_description);
+
+            console.log(id);
             var blip = {
                 name: blip_name,
+                id: id,
                 description: blip_description,
                 tier: tier_id,
                 segment: segment_id

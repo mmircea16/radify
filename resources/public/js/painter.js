@@ -104,8 +104,7 @@ radar.painter = (function() {
         draw_background_circle(circle_radius);
         draw_x_axis(axis_length);
         draw_y_axis(axis_length);
-        draw_blips(blips);
-        add_hover_to_blips();
+        paint_blips();
     }
 
     function paint_blips() {
@@ -113,6 +112,7 @@ radar.painter = (function() {
         $('.new-blip').remove();
         var blips = radar.blips().get_all();
         draw_blips(blips);
+        add_hover_to_blips();
     }
 
     function add_hover_to_blips() {
