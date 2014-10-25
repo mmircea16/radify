@@ -1,3 +1,7 @@
 /lib/
 /classes/
 /target/
+.lein-deps-sum
+.lein-repl-history
+.lein-plugins/
+.nrepl-port
