@@ -10,7 +10,7 @@ var data = {
   blips: [
     {
       id: "some-blip-id",
-      name: "clojure",
+      name: "clojure1",
       description: "some cool language",
 
       segment: "id-segment",
@@ -18,7 +18,7 @@ var data = {
     },
       {
           id: "some-blip-id",
-          name: "clojure",
+          name: "clojure2",
           description: "some cool language",
 
           segment: "id-segment",
@@ -26,7 +26,7 @@ var data = {
       },
       {
           id: "some-blip-id",
-          name: "clojure",
+          name: "clojure3",
           description: "some cool language",
 
           segment: "id-segment",
@@ -34,7 +34,7 @@ var data = {
       },
       {
           id: "some-blip-id",
-          name: "clojure",
+          name: "clojure7",
           description: "some cool language",
 
           segment: "id-segment",
@@ -42,7 +42,7 @@ var data = {
       },
       {
           id: "some-blip-id",
-          name: "clojure",
+          name: "clojure6",
           description: "some cool language",
 
           segment: "id-segment",

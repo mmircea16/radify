@@ -2,9 +2,9 @@ var radar = radar || {};
 
 radar.blips = function() {
 
-    function get_coordinates_for_tier(tier) {
-        var radius = tier.radius - Math.floor(Math.random() * tier.tickness);
-        var angle = Math.random() * Math.PI * 2;
+    function get_coordinates_for_tier(tier, blip_name) {
+        var radius = tier.radius - Math.floor(radar.utils.hash_string_to_int(blip_name) * tier.tickness);
+        var angle = radar.utils.hash_string_to_int(blip_name) * Math.PI * 2;
 
         return {
             x: radius * Math.cos(angle),
@@ -19,7 +19,7 @@ radar.blips = function() {
 
            var blip_view_models = blips.map(function(blip) {
                var tier = radar.tiers().get_by_id(blip.tier);
-               var coordinates = get_coordinates_for_tier(tier);
+               var coordinates = get_coordinates_for_tier(tier, blip.name);
                return {
                   blip_data: blip,
                   x: coordinates.x,
