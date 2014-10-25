@@ -13,7 +13,7 @@
   :min-lein-version "2.0.0"
 
   :source-paths ["src/clj"]
-  :resource-paths ["public"]
+  :resource-paths ["resources"]
 
   :main ^:skip-aot radify.core
   :target-path "target/%s"
