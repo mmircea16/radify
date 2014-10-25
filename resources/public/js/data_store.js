@@ -7,7 +7,7 @@ radar.data_store = (function () {
     var data_retrieved_callback;
 
     function start_retrieving_data() {
-        $.getJSON("http://localhost:8080/api/radar/1", "", function(response){
+        $.getJSON("/api/radar/1", "", function(response){
             data = response;
             data_retrieved_callback();
         });

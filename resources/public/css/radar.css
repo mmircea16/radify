@@ -36,3 +36,8 @@ body{
 .title_left{
     float: left;
 }
+#add_blip_form {
+    display: none;
+    margin-left: 100px;
+    width: 300px;
+}
