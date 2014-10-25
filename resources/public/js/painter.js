@@ -75,14 +75,14 @@ radar.painter = (function() {
             .attr("fill", 'green');
     }
 
-    function draw_blip_at(x,y) {
+    function draw_temp_blip_at(x,y) {
         d3.select("svg")
             .append("circle")
-            .attr('class', 'blip')
+            .attr('class', 'new-blip')
             .attr("cx", circle_x + x)
             .attr("cy", circle_y + y)
             .attr("r", 5)
-            .attr("fill", 'green');
+            .attr("fill", 'red');
     }
 
     function apply_to_page() {
@@ -103,7 +103,13 @@ radar.painter = (function() {
 
      return {
         apply_to_page: apply_to_page,
-        add_blip_at: draw_blip_at,
+        paint_blips: function() {
+          $('.blip').remove();
+          $('.new-blip').remove();
+          var blips = radar.blips().get_all();
+          draw_blips(blips);
+        },
+        add_temp_blip_at: draw_temp_blip_at,
         radius: function(){
             return circle_radius;
         }

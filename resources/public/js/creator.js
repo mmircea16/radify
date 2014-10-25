@@ -9,11 +9,13 @@ radar.creator = (function() {
             var add_blip_form = $('#add_blip_form');
             add_blip_form.hide();
 
-            add_blip_form.find('button').on('click', function(){
+            add_blip_form.find('#save_button').on('click', function(){
                 var blip_name = add_blip_form.find('#blip_name').val();
                 var blip_description = add_blip_form.find('#blip_description').val();
 
                 radar.blips().create_blip(blip_name, blip_description, tier.tier_data.id, segment.segment_data.id);
+
+                radar.painter.paint_blips();
 
                 add_blip_form.hide();
             });
@@ -30,7 +32,7 @@ radar.creator = (function() {
                 tier = radar.tiers().get_tier_at_coordinates(relative_to_center_x, relative_to_center_y);
                 segment = radar.segments().get_segment_at_coordinates(relative_to_center_x, relative_to_center_y);
 
-                radar.painter.add_blip_at(relative_to_center_x, relative_to_center_y);
+                radar.painter.add_temp_blip_at(relative_to_center_x, relative_to_center_y);
 
                 add_blip_form.show();
             });

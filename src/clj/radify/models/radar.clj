@@ -9,7 +9,11 @@
         :segments [{ :id 1
                      :name "techniques"}
                    { :id 2
-                     :name "languages"}]
+                     :name "languages"}
+                   { :id 3
+                     :name "platforms"}
+                   { :id 4
+                     :name "frameworks"}  ]
         :tiers [{:id 1
                  :name "hold"
                  :description "something"}
