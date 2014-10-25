@@ -5,7 +5,7 @@ var data = {
   template: {
     id: "some-id",
     segments: [{id:"techniques", name:"techniques"}, {id:"languages", name:"languages"}],
-    tiers: [{id:"hold", name:"hold", description: "something"}, {id:"assess", name:"assess", description: "something"}, {id:"assess", name:"assess", description: "something"}]
+    tiers: [{id:"hold", name:"hold", description: "something"}, {id:"assess", name:"assess", description: "something"}]
   },
   blips: [
     {
