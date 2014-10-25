@@ -1,7 +1,7 @@
 
 var radar = radar || {};
 
-radar.painter = function() {
+radar.painter = (function() {
     'use strict';
 
     var circle_x = 400;
@@ -10,6 +10,7 @@ radar.painter = function() {
     function draw_background_circle(circle_radius) {
         d3.select('svg')
             .append('circle')
+            .attr('class', 'background_circle')
             .attr('cx',circle_x)
             .attr('cy',circle_y)
             .attr('r', circle_radius)
@@ -66,6 +67,7 @@ radar.painter = function() {
             .data(blips)
             .enter()
             .append("circle")
+            .attr('class', 'blip')
             .attr("cx", function (blip) { return circle_x + blip.x;})
             .attr("cy", function (blip) { return circle_y + blip.y;})
             .attr("r", 5)
@@ -77,6 +79,8 @@ radar.painter = function() {
         var blips = radar.blips().get_all();
 
         var circle_radius = tiers[0].radius;
+        circle_x = circle_radius;
+        circle_y = circle_radius;
         var axis_length = circle_radius * 2 + 30;
 
         draw_tiers(tiers);
@@ -86,13 +90,21 @@ radar.painter = function() {
         draw_blips(blips);
     }
 
+    function add_blip_at(x, y) {
+        // top - right quadrant is the positive x, positive y oen
+        var relative_to_center_x = (x - circle_x);
+        var relative_to_center_y = (circle_y - y);
+        console.log(relative_to_center_x + "   " + relative_to_center_y);
+    }
+
      return {
-        apply_to_page: apply_to_page
+        apply_to_page: apply_to_page,
+        add_blip_at: add_blip_at
      };
 
-};
+})();
 
 
 $(function(){
-   radar.painter().apply_to_page();
+   radar.painter.apply_to_page();
 });

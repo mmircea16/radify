@@ -5,7 +5,7 @@ radar.data_store = function () {
     function get_data() {
         var deferred = Q.defer();
 
-        $.getJSON("contract.json", "", function(data){
+        $.getJSON("http://localhost:8080/api/radar/1", "", function(data){
             deferred.resolve(data);
         });
 
