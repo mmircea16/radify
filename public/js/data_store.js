@@ -25,6 +25,10 @@ radar.data_store = function () {
     return {
         get_tiers: function(){
             return get_dummy_data().template.tiers;
+        },
+
+        get_blips: function() {
+            return get_dummy_data().blips;
         }
     }
 

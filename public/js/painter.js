@@ -46,11 +46,7 @@ radar.painter = function() {
             .attr('fill', 'none')
     }
 
-    function apply_to_page() {
-        var tiers = radar.tiers().get_all();
-        var circle_radius = tiers[0].radius;
-        var axis_length = circle_radius * 2 + 30;
-
+    function draw_tiers(tiers) {
         d3.select("svg")
             .selectAll("circle")
             .data(tiers)
@@ -62,10 +58,32 @@ radar.painter = function() {
             .attr("fill-opacity", 0)
             .attr("stroke", function(tier) { return tier.color;})
             .attr("stroke-width", 3 );
+    }
 
+    function draw_blips(blips) {
+        d3.select("svg")
+            .selectAll("circle .blip")
+            .data(blips)
+            .enter()
+            .append("circle")
+            .attr("cx", function (blip) { return circle_x + blip.x;})
+            .attr("cy", function (blip) { return circle_y + blip.y;})
+            .attr("r", 5)
+            .attr("fill", 'green');
+    }
+
+    function apply_to_page() {
+        var tiers = radar.tiers().get_all();
+        var blips = radar.blips().get_all();
+
+        var circle_radius = tiers[0].radius;
+        var axis_length = circle_radius * 2 + 30;
+
+        draw_tiers(tiers);
         draw_background_circle(circle_radius);
         draw_x_axis(axis_length);
         draw_y_axis(axis_length);
+        draw_blips(blips);
     }
 
      return {

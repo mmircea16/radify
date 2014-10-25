@@ -5,7 +5,7 @@ var data = {
   template: {
     id: "some-id",
     segments: [{id:"techniques", name:"techniques"}, {id:"languages", name:"languages"}],
-    tiers: [{id:"hold", name:"hold", description: "something"}, {id:"assess", name:"assess", description: "something"}]
+    tiers: [{id:"hold", name:"hold", description: "something"}, {id:"assess", name:"assess", description: "something"}, {id:"trial", name:"trial", description: "something"}]
   },
   blips: [
     {
@@ -14,7 +14,39 @@ var data = {
       description: "some cool language",
 
       segment: "id-segment",
-      tier: "id-tier"
-    }
+      tier: "assess"
+    },
+      {
+          id: "some-blip-id",
+          name: "clojure",
+          description: "some cool language",
+
+          segment: "id-segment",
+          tier: "hold"
+      },
+      {
+          id: "some-blip-id",
+          name: "clojure",
+          description: "some cool language",
+
+          segment: "id-segment",
+          tier: "assess"
+      },
+      {
+          id: "some-blip-id",
+          name: "clojure",
+          description: "some cool language",
+
+          segment: "id-segment",
+          tier: "trial"
+      },
+      {
+          id: "some-blip-id",
+          name: "clojure",
+          description: "some cool language",
+
+          segment: "id-segment",
+          tier: "assess"
+      }
   ]
 };
