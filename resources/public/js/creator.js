@@ -16,9 +16,9 @@ radar.creator = (function() {
                 var tier = radar.tiers().get_tier_at_coordinates(relative_to_center_x, relative_to_center_y);
                 var segment = radar.segments().get_segment_at_coordinates(relative_to_center_x, relative_to_center_y);
 
-                //        var blip_view_model = radar.blips().create_blip(tier, segment);
+                radar.blips().create_blip("new_blip", tier.tier_data.id, segment.segment_data.id);
 
-                radar.painter.add_blip_at(relative_to_center_x, relative_to_center_y)
+                radar.painter.add_blip_at(relative_to_center_x, relative_to_center_y);
             });
         }
     }

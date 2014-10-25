@@ -7,19 +7,9 @@ radar.data_store = (function () {
     var data_retrieved_callback;
 
     function start_retrieving_data() {
-        var deferred = Q.defer();
-
         $.getJSON("http://localhost:8080/api/radar/1", "", function(response){
             data = response;
             data_retrieved_callback();
-        });
-
-        return deferred.promise;
-    }
-
-    function test_get_json() {
-        start_retrieving_data().then(function(data){
-            console.log(data);
         });
     }
 
@@ -44,6 +34,14 @@ radar.data_store = (function () {
 
         get_blips: function() {
             return get_data().blips;
+        },
+
+        add_blip: function(blip) {
+            data.blips.push(blip);
+        },
+
+        save_data: function(){
+            console.log(data);
         }
     }
 
