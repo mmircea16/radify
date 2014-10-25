@@ -10,9 +10,15 @@ radar.creator = (function() {
 
                 var radius = radar.painter.radius();
 
-                var x = event.pageX - pos_x - radius;
-                var y = event.pageY - pos_y - radius;
-                radar.painter.add_blip_at(x, y)
+                var relative_to_center_x = event.pageX - pos_x - radius;
+                var relative_to_center_y = event.pageY - pos_y - radius;
+
+                var tier = radar.tiers().get_tier_at_coordinates(relative_to_center_x, relative_to_center_y);
+                var segment = radar.segments().get_segment_at_coordinates(relative_to_center_x, relative_to_center_y);
+
+                //        var blip_view_model = radar.blips().create_blip(tier, segment);
+
+                radar.painter.add_blip_at(relative_to_center_x, relative_to_center_y)
             });
         }
     }

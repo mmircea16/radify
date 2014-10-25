@@ -101,23 +101,9 @@ radar.painter = (function() {
         draw_blips(blips);
     }
 
-    function add_blip_at(x, y) {
-        // using js coordinates: clockwise right + , down +
-        var relative_to_center_x = x;
-        var relative_to_center_y = y;
-        var tier = radar.tiers().get_tier_at_coordinates(relative_to_center_x, relative_to_center_y);
-        var segment = radar.segments().get_segment_at_coordinates(relative_to_center_x, relative_to_center_y);
-
-        draw_blip_at(relative_to_center_x, relative_to_center_y);
-//        var blip_view_model = radar.blips().create_blip(tier, segment);
-
-//        console.log(segment);
-//        console.log(relative_to_center_x + "   " + relative_to_center_y);
-    }
-
      return {
         apply_to_page: apply_to_page,
-        add_blip_at: add_blip_at,
+        add_blip_at: draw_blip_at,
         radius: function(){
             return circle_radius;
         }
