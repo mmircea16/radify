@@ -41,3 +41,20 @@ body{
     margin-left: 100px;
     width: 300px;
 }
+
+#more_info {
+    display: none;
+
+}
+
+#more_info #name {
+    font-size: 24px;
+}
+
+#more_info #description {
+    font-size: 18px;
+}
+
+.blip {
+    cursor: pointer;
+}

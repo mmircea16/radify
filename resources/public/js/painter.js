@@ -8,6 +8,8 @@ radar.painter = (function() {
     var circle_y = 400;
     var circle_radius = 400;
 
+    var more_info;
+
     function draw_background_circle(circle_radius) {
         d3.select('svg')
             .append('circle')
@@ -69,6 +71,7 @@ radar.painter = (function() {
             .enter()
             .append("circle")
             .attr('class', 'blip')
+            .attr('id', function (blip) { return blip.blip_data.id })
             .attr("cx", function (blip) { return circle_x + blip.x;})
             .attr("cy", function (blip) { return circle_y + blip.y;})
             .attr("r", 5)
@@ -86,6 +89,9 @@ radar.painter = (function() {
     }
 
     function apply_to_page() {
+
+        more_info = $('#more_info');
+
         var tiers = radar.tiers().get_all();
         var blips = radar.blips().get_all();
 
@@ -99,16 +105,38 @@ radar.painter = (function() {
         draw_x_axis(axis_length);
         draw_y_axis(axis_length);
         draw_blips(blips);
+        add_hover_to_blips();
+    }
+
+    function paint_blips() {
+        $('.blip').remove();
+        $('.new-blip').remove();
+        var blips = radar.blips().get_all();
+        draw_blips(blips);
+    }
+
+    function add_hover_to_blips() {
+        $('.blip').on('mouseover', function(event){
+           more_info.show();
+           var id = $(event.target).attr('id');
+           var blip = radar.blips().get_blip_by_id(id);
+
+           console.log(id);
+           console.log(blip);
+           more_info.find('#name').text(blip.blip_data.name);
+           more_info.find('#description').text(blip.blip_data.description);
+        });
+
+        $('.blip').on('mouseout', function(){
+            more_info.find('name').text('');
+            more_info.hide();
+        });
+
     }
 
      return {
         apply_to_page: apply_to_page,
-        paint_blips: function() {
-          $('.blip').remove();
-          $('.new-blip').remove();
-          var blips = radar.blips().get_all();
-          draw_blips(blips);
-        },
+        paint_blips: paint_blips,
         add_temp_blip_at: draw_temp_blip_at,
         radius: function(){
             return circle_radius;

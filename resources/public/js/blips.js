@@ -15,25 +15,34 @@ radar.blips = function() {
         }
     }
 
+    function get_all() {
+
+        var blips = radar.data_store.get_blips();
+
+        var blip_view_models = blips.map(function(blip_data) {
+            var tier = radar.tiers().get_by_id(blip_data.tier);
+            var segment = radar.segments().get_by_id(blip_data.segment);
+            var coordinates = get_coordinates_for_tier(blip_data.name, tier, segment);
+            return {
+                blip_data: blip_data,
+                x: coordinates.x,
+                y: coordinates.y,
+                tier: tier,
+                segment: segment
+            }
+        });
+
+        return blip_view_models;
+    }
+
     return {
-        get_all: function () {
+        get_all: get_all,
 
-           var blips = radar.data_store.get_blips();
-
-           var blip_view_models = blips.map(function(blip_data) {
-               var tier = radar.tiers().get_by_id(blip_data.tier);
-               var segment = radar.segments().get_by_id(blip_data.segment);
-               var coordinates = get_coordinates_for_tier(blip_data.name, tier, segment);
-               return {
-                  blip_data: blip_data,
-                  x: coordinates.x,
-                  y: coordinates.y,
-                  tier: tier,
-                  segment: segment
-              }
-           });
-
-           return blip_view_models;
+        get_blip_by_id: function (id) {
+            console.log(get_all());
+            return get_all().filter(function(blip) {
+                return (blip.blip_data.id.toString() === id)
+            })[0]
         },
 
         create_blip: function(blip_name, blip_description, tier_id, segment_id){
