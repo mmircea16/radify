@@ -8,7 +8,11 @@ radar.creator = (function() {
                 var pos_x = $('.background_circle').offset().left,
                     pos_y = $('.background_circle').offset().top;
 
-                radar.painter.add_blip_at(event.pageX - pos_x, event.pageY - pos_y)
+                var radius = radar.painter.radius();
+
+                var x = event.pageX - pos_x - radius;
+                var y = event.pageY - pos_y - radius;
+                radar.painter.add_blip_at(x, y)
             });
         }
     }

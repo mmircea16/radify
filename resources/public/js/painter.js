@@ -6,6 +6,7 @@ radar.painter = (function() {
 
     var circle_x = 400;
     var circle_y = 400;
+    var circle_radius = 400;
 
     function draw_background_circle(circle_radius) {
         d3.select('svg')
@@ -88,7 +89,7 @@ radar.painter = (function() {
         var tiers = radar.tiers().get_all();
         var blips = radar.blips().get_all();
 
-        var circle_radius = tiers[0].radius;
+        circle_radius = tiers[0].radius;
         circle_x = circle_radius;
         circle_y = circle_radius;
         var axis_length = circle_radius * 2 + 30;
@@ -102,8 +103,8 @@ radar.painter = (function() {
 
     function add_blip_at(x, y) {
         // using js coordinates: clockwise right + , down +
-        var relative_to_center_x = (x - circle_x);
-        var relative_to_center_y = (y - circle_y);
+        var relative_to_center_x = x;
+        var relative_to_center_y = y;
         var tier = radar.tiers().get_tier_at_coordinates(relative_to_center_x, relative_to_center_y);
         var segment = radar.segments().get_segment_at_coordinates(relative_to_center_x, relative_to_center_y);
 
@@ -116,7 +117,10 @@ radar.painter = (function() {
 
      return {
         apply_to_page: apply_to_page,
-        add_blip_at: add_blip_at
+        add_blip_at: add_blip_at,
+        radius: function(){
+            return circle_radius;
+        }
      };
 
 })();
