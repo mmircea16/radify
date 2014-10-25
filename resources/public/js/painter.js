@@ -120,8 +120,3 @@ radar.painter = (function() {
      };
 
 })();
-
-
-$(function(){
-   radar.painter.apply_to_page();
-});

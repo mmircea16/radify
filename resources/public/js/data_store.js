@@ -2,37 +2,48 @@ var radar = radar || {};
 
 radar.data_store = (function () {
 
-    function get_data() {
+    var data;
+
+    var data_retrieved_callback;
+
+    function start_retrieving_data() {
         var deferred = Q.defer();
 
-        $.getJSON("http://localhost:8080/api/radar/1", "", function(data){
-            deferred.resolve(data);
+        $.getJSON("http://localhost:8080/api/radar/1", "", function(response){
+            data = response;
+            data_retrieved_callback();
         });
 
         return deferred.promise;
     }
 
     function test_get_json() {
-        get_data().then(function(data){
+        start_retrieving_data().then(function(data){
             console.log(data);
         });
     }
 
-    function get_dummy_data() {
+    function get_data() {
         return data;
     }
 
     return {
+        once_retrieved: function (callback) {
+            data_retrieved_callback = callback;
+        },
+
+        start_retrieving_data: start_retrieving_data,
+
         get_tiers: function(){
-            return get_dummy_data().template.tiers;
+            return get_data().template.tiers;
         },
 
         get_segments: function(){
-            return get_dummy_data().template.segments;
+            return get_data().template.segments;
         },
 
         get_blips: function() {
-            return get_dummy_data().blips;
+            return get_data().blips;
         }
     }
 

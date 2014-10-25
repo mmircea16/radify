@@ -1,6 +1,6 @@
 var radar = radar || {};
 
-radar.creator = function() {
+radar.creator = (function() {
 
     return {
         apply_to_page: function() {
@@ -13,8 +13,4 @@ radar.creator = function() {
         }
     }
 
-};
-
-$(function(){
-   radar.creator().apply_to_page();
-});
+})();

@@ -15,9 +15,14 @@
                  :description "something"}]
     }
   :blips [{:id 1
-           :name "clojure"
+           :name "clojure lang"
            :description "some cool language"
            :segment 1
            :tier 1 }
+           {:id 2
+            :name "scala"
+            :description "some cool language"
+            :segment 2
+            :tier 1 }
          ]
  })
