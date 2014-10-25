@@ -35,6 +35,13 @@ radar.tiers = function () {
             return get_all().filter(function(tier) {
                 return (tier.tier_data.id === id)
             })[0]
+        },
+
+        get_tier_at_coordinates: function(x,y) {
+            var radius = Math.sqrt(x*x + y*y);
+            return get_all().filter(function(tier) {
+                return (tier.radius > radius) && ((tier.radius - radius) < tier.tickness)
+            })[0]
         }
       }
 };

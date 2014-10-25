@@ -34,6 +34,10 @@ radar.blips = function() {
            });
 
            return blip_view_models;
+        },
+
+        create_blip: function(tier){
+
         }
     };
 

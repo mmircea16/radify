@@ -24,7 +24,16 @@ radar.segments = function () {
                 return (segment.segment_data.id === id)
             })[0]
 
+        },
+
+        get_segment_at_coordinates: function(x,y) {
+            var angle = Math.PI/2 - Math.atan2(x,y);
+            angle = (angle < 0) ? (angle + 2*Math.PI) : angle;
+            return get_all().filter(function(segment) {
+                return (segment.end_angle > angle) && (segment.start_angle < angle)
+            })[0]
         }
+
     };
 
 };

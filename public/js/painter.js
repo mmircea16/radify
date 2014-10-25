@@ -91,10 +91,16 @@ radar.painter = (function() {
     }
 
     function add_blip_at(x, y) {
-        // top - right quadrant is the positive x, positive y oen
+        // using js coordinates: clockwise right + , down +
         var relative_to_center_x = (x - circle_x);
-        var relative_to_center_y = (circle_y - y);
-        console.log(relative_to_center_x + "   " + relative_to_center_y);
+        var relative_to_center_y = (y - circle_y);
+        var tier = radar.tiers().get_tier_at_coordinates(relative_to_center_x, relative_to_center_y);
+        var segment = radar.segments().get_segment_at_coordinates(relative_to_center_x, relative_to_center_y);
+
+//        var blip_view_model = radar.blips().create_blip(tier, segment);
+
+        console.log(segment);
+//        console.log(relative_to_center_x + "   " + relative_to_center_y);
     }
 
      return {
