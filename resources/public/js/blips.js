@@ -20,12 +20,12 @@ radar.blips = function() {
 
            var blips = radar.data_store().get_blips();
 
-           var blip_view_models = blips.map(function(blip) {
-               var tier = radar.tiers().get_by_id(blip.tier);
-               var segment = radar.segments().get_by_id(blip.segment);
-               var coordinates = get_coordinates_for_tier(blip.name, tier, segment);
+           var blip_view_models = blips.map(function(blip_data) {
+               var tier = radar.tiers().get_by_id(blip_data.tier);
+               var segment = radar.segments().get_by_id(blip_data.segment);
+               var coordinates = get_coordinates_for_tier(blip_data.name, tier, segment);
                return {
-                  blip_data: blip,
+                  blip_data: blip_data,
                   x: coordinates.x,
                   y: coordinates.y,
                   tier: tier,
@@ -36,8 +36,14 @@ radar.blips = function() {
            return blip_view_models;
         },
 
-        create_blip: function(tier){
-
+        create_blip: function(blip_name, x, y , tier, segment){
+            return {
+                blip_data: {name: blip_name},
+                x: x,
+                y: y,
+                tier: tier,
+                segment: segment
+            }
         }
     };
 

@@ -74,6 +74,16 @@ radar.painter = (function() {
             .attr("fill", 'green');
     }
 
+    function draw_blip_at(x,y) {
+        d3.select("svg")
+            .append("circle")
+            .attr('class', 'blip')
+            .attr("cx", circle_x + x)
+            .attr("cy", circle_y + y)
+            .attr("r", 5)
+            .attr("fill", 'green');
+    }
+
     function apply_to_page() {
         var tiers = radar.tiers().get_all();
         var blips = radar.blips().get_all();
@@ -97,6 +107,7 @@ radar.painter = (function() {
         var tier = radar.tiers().get_tier_at_coordinates(relative_to_center_x, relative_to_center_y);
         var segment = radar.segments().get_segment_at_coordinates(relative_to_center_x, relative_to_center_y);
 
+        draw_blip_at(relative_to_center_x, relative_to_center_y);
 //        var blip_view_model = radar.blips().create_blip(tier, segment);
 
         console.log(segment);
