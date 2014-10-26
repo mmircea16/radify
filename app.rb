@@ -1,9 +1,33 @@
 require 'sinatra'
 require 'redis'
 require 'json'
+require 'twitter'
+require 'omniauth-twitter'
 
 set :public_folder, 'resources/public'
 
+CONSUMER_KEY =  ENV['CONSUMER_KEY']
+CONSUMER_SECRET = ENV['CONSUMER_SECRET']
+configure do
+  enable :sessions
+  use OmniAuth::Builder do
+    provider :twitter, CONSUMER_KEY, CONSUMER_SECRET
+  end
+
+end
+
+get '/login' do
+  redirect to('/auth/twitter')
+end
+
+get '/auth/failure' do
+  params[:message]
+end
+
+get '/auth/twitter/callback' do
+  session[:uid] = env['omniauth.auth']['uid']
+  redirect to('/')
+end
 
 get '/' do
   File.read(File.join(File.dirname(__FILE__), 'resources/public/html/index.html'))
