@@ -35,5 +35,4 @@ radar.segments = function () {
         }
 
     };
-
 };
