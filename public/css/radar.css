@@ -146,7 +146,8 @@ body{
 }
 
 #update_segment_labels {
-    margin-left: -50px;
+    margin: auto;
+    display: block;
 }
 
 #blip_hover_description{
