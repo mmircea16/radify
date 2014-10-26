@@ -134,6 +134,8 @@ radar.painter = (function () {
         add_more_info_to_blips();
     }
 
+    var modalShowing = false;
+
     function add_more_info_to_blips() {
         $('.blip').mouseenter(
             function (event) {
@@ -142,11 +144,14 @@ radar.painter = (function () {
 
         $('.blip').mouseleave(
             function (event) {
-                $(this).attr('fill', 'green');
+                if(!modalShowing){
+                    $(this).attr('fill', 'green');
+                }
             });
 
         $('.blip').on('click', function (event) {
-            $(this).attr('fill', 'red');
+            var blipDomElement = $(this);
+            modalShowing = true;
             more_info.show();
 
             var id = $(event.target).attr('id');
@@ -155,13 +160,22 @@ radar.painter = (function () {
             console.log(blip);
             more_info.show_for_blip(blip);
 
+            var reset_blip_colour = function(){
+                blipDomElement.attr('fill', 'green');
+                modalShowing = false;
+                paint_blips();
+            }
+
             more_info.on_accept(function () {
                 blip.blip_data.name = more_info.get_data().name;
                 blip.blip_data.description = more_info.get_data().description;
                 blip.blip_data.tier = more_info.get_data().tier_id;
                 blip.tier_data = radar.tiers().get_by_id(more_info.get_data().tier_id);
                 radar.data_store.save_data();
-                paint_blips();
+                reset_blip_colour();
+            });
+            more_info.on_cancel(function () {
+                reset_blip_colour();
             });
         });
     }
