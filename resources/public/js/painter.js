@@ -109,10 +109,9 @@ radar.painter = (function () {
 
     function apply_to_page() {
 
-        more_info = radar.modal('#more_info');
+        more_info = radar.more_info();
 
         var tiers = radar.tiers().get_all();
-        var blips = radar.blips().get_all();
 
         circle_radius = tiers[0].radius;
         circle_x = circle_radius;
@@ -141,13 +140,15 @@ radar.painter = (function () {
             var id = $(event.target).attr('id');
             var blip = radar.blips().get_blip_by_id(id);
 
-            more_info.content().find('#name').text(blip.blip_data.name);
-            more_info.content().find('#description').text(blip.blip_data.description);
+            more_info.show_for_blip(blip);
 
             more_info.on_accept(function () {
-                blip.blip_data.name =  more_info.content().find('#name').text();
-                blip.blip_data.description =  more_info.content().find('#description').text();
+                blip.blip_data.name =  more_info.get_data().name;
+                blip.blip_data.description =  more_info.get_data().description;
+                blip.blip_data.tier = more_info.get_data().tier_id;
+                blip.tier_data = radar.tiers().get_by_id(more_info.get_data().tier_id);
                 radar.data_store.save_data();
+                paint_blips();
             });
         });
     }

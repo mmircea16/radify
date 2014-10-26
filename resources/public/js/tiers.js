@@ -28,6 +28,18 @@ radar.tiers = function () {
 
     var tiers = radar.data_store.get_tiers();
 
+    function index_of_tier(tier_id){
+        var pos = -1;
+        var i = 0;
+        while (i < get_all().length) {
+            if (get_all()[i].tier_data.id === tier_id){
+                pos = i;
+            }
+            i++;
+        }
+        return pos;
+    }
+
     return {
         get_all: get_all,
 
@@ -42,6 +54,19 @@ radar.tiers = function () {
             return get_all().filter(function(tier) {
                 return (tier.radius > radius) && ((tier.radius - radius) < tier.tickness)
             })[0]
+        },
+
+        next_tier: function(tier_id){
+            var pos = index_of_tier(tier_id);
+            var next_pos = (pos < (get_all().length - 1) ) ? (pos + 1): pos;
+            return get_all()[next_pos];
+        },
+
+        previous_tier: function(tier_id){
+            var pos = index_of_tier(tier_id);
+            var prev_pos = (pos > 0 ) ? (pos - 1): pos;
+            return get_all()[prev_pos]
         }
-      }
+
+    }
 };

@@ -80,6 +80,19 @@ body{
     font-size: 18px;
 }
 
+#more_info #tier{
+    display: inline;
+}
+
+#more_info .tier_selector{
+    font-size: 16px;
+    display: block;
+}
+
+#more_info .fa {
+    cursor: pointer;
+}
+
 .blip {
     cursor: pointer;
 }
