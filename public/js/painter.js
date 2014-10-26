@@ -112,18 +112,25 @@ radar.painter = (function () {
         more_info = radar.more_info();
 
         var tiers = radar.tiers().get_all();
-//        var segments = radar.segments.get_all();
+        var segments = radar.segments().get_all();
         circle_radius = tiers[0].radius;
         circle_x = circle_radius;
         circle_y = circle_radius;
         var axis_length = circle_radius * 2 + 30;
 
-//        draw_segment_labes(segments);
+        draw_segment_labels(segments);
         draw_tiers(tiers);
         draw_background_circle(circle_radius);
         draw_x_axis(axis_length);
         draw_y_axis(axis_length);
         paint_blips();
+    }
+
+    function draw_segment_labels(segments){
+        d3.zip(segments, ['.bottom_and_right', '.bottom_and_left', '.top_and_left', '.top_and_right']).forEach(function(pair){
+            $(pair[1]).text(pair[0].segment_data.name);
+        });
+
     }
 
     function paint_blips() {

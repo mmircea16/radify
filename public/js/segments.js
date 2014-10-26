@@ -19,6 +19,8 @@ radar.segments = function () {
     }
 
     return {
+        get_all: get_all,
+
         get_by_id: function (id) {
             return get_all().filter(function (segment) {
                 return (segment.segment_data.id === id)

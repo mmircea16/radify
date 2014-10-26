@@ -114,3 +114,28 @@ body{
     cursor: pointer;
     transition: ease-in-out 0.3s;
 }
+
+.sector_description {
+    position:absolute;
+    font-size: 22px;
+}
+
+.top_and_left {
+    left: 100px;
+    top: 100px;
+}
+
+.bottom_and_left {
+    left: 100px;
+    bottom: 0px;
+}
+
+.top_and_right {
+    right: 100px;
+    top: 100px;
+}
+
+.bottom_and_right {
+    right: 100px;
+    bottom: 0px;
+}
