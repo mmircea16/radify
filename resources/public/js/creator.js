@@ -4,18 +4,19 @@ radar.creator = (function() {
 
     var tier, segment, add_blip_form;
     function save_button_clicked(){
-        var blip_name = add_blip_form.find('#blip_name').val();
-        var blip_description = add_blip_form.find('#blip_description').val();
+        console.log('save button');
+        var blip_name = add_blip_form.content().find('#blip_name').val();
+        var blip_description = add_blip_form.content().find('#blip_description').val();
 
         radar.blips().create_blip(blip_name, blip_description, tier.tier_data.id, segment.segment_data.id);
 
         radar.painter.paint_blips();
-        hide_add_blip_modal();
+        add_blip_form.hide();
     }
 
     function cancel_button_clicked(){
         radar.painter.paint_blips();
-        hide_add_blip_modal();
+        add_blip_form.hide();
     }
 
     function background_circle_clicked(event){
@@ -32,32 +33,22 @@ radar.creator = (function() {
 
         radar.painter.add_temp_blip_at(relative_to_center_x, relative_to_center_y);
 
-        show_add_blip_modal();
+        add_blip_form.show();
+        empty_add_blip_form();
     }
 
     function empty_add_blip_form() {
-        add_blip_form.find('#blip_name').val('');
-        add_blip_form.find('#blip_description').val('');
-    }
-
-    function show_add_blip_modal(){
-        add_blip_form.show();
-        empty_add_blip_form();
-        $('.cover').show();
-    }
-
-    function hide_add_blip_modal(){
-        add_blip_form.hide();
-        $('.cover').hide();
+        add_blip_form.content().find('#blip_name').val('');
+        add_blip_form.content().find('#blip_description').val('');
     }
 
 
     return {
         apply_to_page: function() {
-            add_blip_form = $('#add_blip_form');
+            add_blip_form = radar.modal('#add_blip_form');
 
-            add_blip_form.find('#save_button').on('click', save_button_clicked);
-            add_blip_form.find('#cancel_button').on('click', cancel_button_clicked);
+            add_blip_form.on_accept(save_button_clicked);
+            add_blip_form.on_cancel(cancel_button_clicked);
 
             $('.background_circle').on('click', background_circle_clicked);
         }
