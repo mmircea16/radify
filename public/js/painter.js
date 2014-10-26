@@ -119,6 +119,7 @@ radar.painter = (function () {
         var axis_length = circle_radius * 2 + 30;
 
         draw_segment_labels(segments);
+        enable_label_editing(segments)
         draw_tiers(tiers);
         draw_background_circle(circle_radius);
         draw_x_axis(axis_length);
@@ -131,6 +132,19 @@ radar.painter = (function () {
             $(pair[1]).text(pair[0].segment_data.name);
         });
 
+    }
+
+    function enable_label_editing(segments){
+        $('#update_segment_labels').click(function(){
+            console.log('update segm labels');
+            d3.zip(segments, ['.bottom_and_right', '.bottom_and_left', '.top_and_left', '.top_and_right']).forEach(function(pair){
+                pair[0].segment_data.name = $(pair[1]).text();
+            });
+            var new_segments = segments.map(function (segment) {
+                return segment.segment_data
+            });
+            radar.segments().update_with(new_segments)
+        });
     }
 
     function paint_blips() {

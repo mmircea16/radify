@@ -51,6 +51,11 @@ radar.data_store = (function () {
             data.blips.push(blip);
         },
 
+        update_segments: function (segments) {
+          data.template.segments = segments;
+          console.log(segments);
+        },
+
         save_data: function () {
             if (get_radar_id() === 'new') {
                 $.ajax('/api/radar', {

@@ -28,6 +28,11 @@ radar.segments = function () {
 
         },
 
+        update_with: function(segments){
+          radar.data_store.update_segments(segments);
+          radar.data_store.save_data();
+        },
+
         get_segment_at_coordinates: function(x,y) {
             var angle = Math.PI/2 - Math.atan2(x,y);
             angle = (angle < 0) ? (angle + 2*Math.PI) : angle;
