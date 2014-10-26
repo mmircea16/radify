@@ -7,3 +7,5 @@
 .nrepl-port
 .idea/
 workspace.xml
+dump.rdb
+.DS_Store
