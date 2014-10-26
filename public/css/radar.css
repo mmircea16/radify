@@ -149,3 +149,22 @@ body{
 #update_segment_labels {
     margin-left: -50px;
 }
+
+#blip_hover_description{
+    display: none;
+    position: absolute;
+    background-color: #FFF;
+    height: 100px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #000;
+    border-radius: 20px;
+    width: 200px;
+    z-index: 2000;
+}
+
+#hover_title{
+    text-align: center;
+    margin-top: 0;
+}

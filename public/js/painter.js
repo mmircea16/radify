@@ -163,11 +163,24 @@ radar.painter = (function () {
     function add_more_info_to_blips() {
         $('.blip').mouseenter(
             function (event) {
-                $(this).attr('fill', 'red');
+                var blipDomElement = $(this);
+                blipDomElement.attr('fill', 'red');
+
+                var id = blipDomElement.attr('id');
+                var blip = radar.blips().get_blip_by_id(id);
+
+                var hoverText = blip.blip_data.description;
+                var hoverTitle = blip.blip_data.name;
+
+                $('body').prepend('<div id="blip_hover_description"> <h4 id="hover_title">' + hoverTitle + '</h4><p>' + hoverText + '</p></div>')
+                $('#blip_hover_description').css({top:(event.pageY-115), left: event.pageX-100}).fadeIn('slow');
+
+
             });
 
         $('.blip').mouseleave(
             function (event) {
+                $('#blip_hover_description').remove();
                 if(!modalShowing){
                     $(this).attr('fill', 'green');
                 }
@@ -175,6 +188,7 @@ radar.painter = (function () {
 
         $('.blip').on('click', function (event) {
             var blipDomElement = $(this);
+            $('#blip_hover_description').remove();
             modalShowing = true;
             more_info.show();
 
