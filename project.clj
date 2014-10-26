@@ -9,7 +9,21 @@
                  [ring "1.3.1"]
                  [ring/ring-json "0.2.0"] ;; for serializing
                  [http-kit "2.1.19"]
-                 [com.ashafa/clutch "0.4.0"]] ;; CouchDB wrapper love :D
+                 [com.ashafa/clutch "0.4.0"]
+                 
+                 [com.cemerick/friend "0.2.0-SNAPSHOT"]
+
+                 ;; only used for the oauth-related demos
+                 [friend-oauth2 "0.0.3"]
+                 
+                 ;; only used to generate demo app pages
+                 [hiccup "1.0.1"]
+                 
+                 ;; only used to discover demo app namespaces
+                 [bultitude "0.1.7"]
+                 
+                 ;; only used for foundation js/css
+                 [org.webjars/foundation "4.0.4"]] ;; CouchDB wrapper love :D
 
   :min-lein-version "2.0.0"
 
