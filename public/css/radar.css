@@ -1,6 +1,8 @@
 #radar_board {
-    width: 800px;
-    height: 800px;
+    display: block;
+    margin: auto;
+    width: 451px;
+    height: 451px;
 }
 body{
 		font-family: 'Open Sans';
@@ -38,12 +40,12 @@ body{
 }
 #add_blip_form {
     width: 500px;
-    height: 300px;
+    height: 250px;
 }
 
 #more_info {
     width: 500px;
-    height: 300px;
+    height: 250px;
 }
 
 .modal {
