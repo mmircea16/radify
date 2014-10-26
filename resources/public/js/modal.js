@@ -10,11 +10,15 @@ radar.modal = function (selector) {
     function show(){
         $element.show();
         $cover.show();
+        $('body').css({'overflow': 'hidden'})
+
     }
 
     function hide(){
         $element.hide();
         $cover.hide();
+        $('body').css({'overflow': 'auto'})
+
     }
 
 
