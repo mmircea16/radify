@@ -35,8 +35,14 @@ radar.creator = (function() {
         show_add_blip_modal();
     }
 
+    function empty_add_blip_form() {
+        add_blip_form.find('#blip_name').val('');
+        add_blip_form.find('#blip_description').val('');
+    }
+
     function show_add_blip_modal(){
         add_blip_form.show();
+        empty_add_blip_form();
         $('.cover').show();
     }
 
