@@ -61,6 +61,10 @@ get '/radar/:id' do
   File.read(File.join(File.dirname(__FILE__), 'public/html/index.html'))
 end
 
+get '/main' do
+  File.read(File.join(File.dirname(__FILE__), 'public/html/main.html'))
+end
+
 get '/api/radar/:id' do
   redis = Redis.new
   redis.get("blip-#{params[:id]}")
