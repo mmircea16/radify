@@ -1,7 +1,6 @@
-
 var radar = radar || {};
 
-radar.painter = (function() {
+radar.painter = (function () {
     'use strict';
 
     var circle_x = 400;
@@ -14,37 +13,47 @@ radar.painter = (function() {
         d3.select('svg')
             .append('circle')
             .attr('class', 'background_circle')
-            .attr('cx',circle_x)
-            .attr('cy',circle_y)
+            .attr('cx', circle_x)
+            .attr('cy', circle_y)
             .attr('r', circle_radius)
             .attr('fill-opacity', 0.2)
             .attr('fill', "grey");
     }
 
     var lineFunction = d3.svg.line()
-                             .x(function(d) { return d.x; })
-                             .y(function(d) { return d.y; })
-                             .interpolate("linear");
+        .x(function (d) {
+            return d.x;
+        })
+        .y(function (d) {
+            return d.y;
+        })
+        .interpolate("linear");
 
-    function draw_x_axis(axis_length){
-        var start_x = (circle_x - axis_length/2);
-        var fin_x = (circle_x + axis_length/2);
+    function draw_x_axis(axis_length) {
+        var start_x = (circle_x - axis_length / 2);
+        var fin_x = (circle_x + axis_length / 2);
 
         d3.select('svg')
-          .append('path')
-          .attr('d', lineFunction([{"x": start_x, "y": circle_y}, {"x": fin_x, "y": circle_y}]))
+            .append('path')
+            .attr('d', lineFunction([
+                {"x": start_x, "y": circle_y},
+                {"x": fin_x, "y": circle_y}
+            ]))
             .attr('stroke', 'black')
             .attr('stroke-width', 3)
             .attr('fill', 'none')
     }
 
-    function draw_y_axis(axis_length){
-        var start_y = (circle_y - axis_length/2);
-        var fin_y = (circle_y + axis_length/2);
+    function draw_y_axis(axis_length) {
+        var start_y = (circle_y - axis_length / 2);
+        var fin_y = (circle_y + axis_length / 2);
 
         d3.select('svg')
-          .append('path')
-          .attr('d', lineFunction([{"x": circle_x, "y": start_y}, {"x": circle_x, "y": fin_y}]))
+            .append('path')
+            .attr('d', lineFunction([
+                {"x": circle_x, "y": start_y},
+                {"x": circle_x, "y": fin_y}
+            ]))
             .attr('stroke', 'black')
             .attr('stroke-width', 3)
             .attr('fill', 'none')
@@ -58,10 +67,14 @@ radar.painter = (function() {
             .append("circle")
             .attr("cx", circle_x)
             .attr("cy", circle_y)
-            .attr("r", function(tier) { return tier.radius;})
+            .attr("r", function (tier) {
+                return tier.radius;
+            })
             .attr("fill-opacity", 0)
-            .attr("stroke", function(tier) { return tier.color;})
-            .attr("stroke-width", 3 );
+            .attr("stroke", function (tier) {
+                return tier.color;
+            })
+            .attr("stroke-width", 3);
     }
 
     function draw_blips(blips) {
@@ -71,14 +84,20 @@ radar.painter = (function() {
             .enter()
             .append("circle")
             .attr('class', 'blip')
-            .attr('id', function (blip) { return blip.blip_data.id })
-            .attr("cx", function (blip) { return circle_x + blip.x;})
-            .attr("cy", function (blip) { return circle_y + blip.y;})
+            .attr('id', function (blip) {
+                return blip.blip_data.id
+            })
+            .attr("cx", function (blip) {
+                return circle_x + blip.x;
+            })
+            .attr("cy", function (blip) {
+                return circle_y + blip.y;
+            })
             .attr("r", 5)
             .attr("fill", 'green');
     }
 
-    function draw_temp_blip_at(x,y) {
+    function draw_temp_blip_at(x, y) {
         d3.select("svg")
             .append("circle")
             .attr('class', 'new-blip')
@@ -112,40 +131,34 @@ radar.painter = (function() {
         $('.new-blip').remove();
         var blips = radar.blips().get_all();
         draw_blips(blips);
-        add_hover_to_blips();
+        add_more_info_to_blips();
     }
 
-    function add_hover_to_blips() {
-        $('.blip').on('click', function(event){
-           more_info.show();
+    function add_more_info_to_blips() {
+        $('.blip').on('click', function (event) {
+            more_info.show();
 
-           var id = $(event.target).attr('id');
-           var blip = radar.blips().get_blip_by_id(id);
+            var id = $(event.target).attr('id');
+            var blip = radar.blips().get_blip_by_id(id);
 
-           more_info.content().find('#name').text(blip.blip_data.name);
-           more_info.content().find('#description').text(blip.blip_data.description);
+            more_info.content().find('#name').text(blip.blip_data.name);
+            more_info.content().find('#description').text(blip.blip_data.description);
 
-            more_info.on_accept(function(){
-                console.log('accept');
+            more_info.on_accept(function () {
+                blip.blip_data.name =  more_info.content().find('#name').text();
+                blip.blip_data.description =  more_info.content().find('#description').text();
+                radar.data_store.save_data();
             });
         });
-
-
-//        $('.blip').on('mouseout', function(){
-//            more_info.find('name').text('');
-//            more_info.hide();
-//            $('.cover').hide();
-//        });
-
     }
 
-     return {
+    return {
         apply_to_page: apply_to_page,
         paint_blips: paint_blips,
         add_temp_blip_at: draw_temp_blip_at,
-        radius: function(){
+        radius: function () {
             return circle_radius;
         }
-     };
+    };
 
 })();

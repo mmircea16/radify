@@ -35,15 +35,16 @@ radar.blips = function() {
         return blip_view_models;
     }
 
+    function get_blip_by_id(id) {
+        console.log(get_all());
+        return get_all().filter(function(blip) {
+            return (blip.blip_data.id.toString() === id)
+        })[0]
+    }
+
     return {
         get_all: get_all,
-
-        get_blip_by_id: function (id) {
-            console.log(get_all());
-            return get_all().filter(function(blip) {
-                return (blip.blip_data.id.toString() === id)
-            })[0]
-        },
+        get_blip_by_id: get_blip_by_id,
 
         create_blip: function(blip_name, blip_description, tier_id, segment_id){
             var id = radar.utils.hash_string_to_int(blip_name + blip_description);
