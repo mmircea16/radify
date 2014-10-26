@@ -7,8 +7,8 @@ radar.data_store = (function () {
     var data_retrieved_callback;
 
     function get_radar_id() {
-        if (location.href.split('#').length == 1) return 'new';
-        return location.href.split('#')[1]
+        var pos = location.href.split('/').length - 1;
+        return location.href.split('/')[pos]
     }
 
     function start_retrieving_data() {

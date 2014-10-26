@@ -28,6 +28,17 @@ get '/auth/twitter/callback' do
 end
 
 get '/' do
+  if session[:uid]
+    redis = Redis.new
+    id = redis.get("twitter-#{session[:uid]}")
+    redirect to("/radar/#{id}")
+  else
+    redirect to('/login')
+  end
+
+end
+
+get '/radar/:id' do
   File.read(File.join(File.dirname(__FILE__), 'public/html/index.html'))
 end
 
