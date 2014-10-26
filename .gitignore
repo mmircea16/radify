@@ -5,3 +5,5 @@
 .lein-repl-history
 .lein-plugins/
 .nrepl-port
+.idea/
+workspace.xml

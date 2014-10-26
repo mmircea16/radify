@@ -4,7 +4,7 @@ require 'json'
 require 'twitter'
 require 'omniauth-twitter'
 
-CONSUMER_KEY =  ENV['CONSUMER_KEY']
+CONSUMER_KEY = ENV['CONSUMER_KEY']
 CONSUMER_SECRET = ENV['CONSUMER_SECRET']
 configure do
   enable :sessions
@@ -38,18 +38,29 @@ end
 
 post '/api/radar' do
   content_type :json
-  redis = Redis.new
-  id = SecureRandom.hex(10)
-  data = request.body.read
-  redis.set("blip-#{id}", data)
-  {_id: id}.to_json
+  if session[:uid]
+    redis = Redis.new
+    id = SecureRandom.hex(10)
+    data = request.body.read
+    redis.set("blip-#{id}", data)
+    redis.set("twitter-#{session[:uid]}", id)
+    {_id: id}.to_json
+  else
+    status 401
+  end
+
 end
 
 put '/api/radar/:id' do
   content_type :json
   redis = Redis.new
   id = params[:id]
-  data = request.body.read
-  redis.set("blip-#{id}", data)
-  {_id: id}.to_json
+  if session[:uid] and redis.get("twitter-#{session[:uid]}") == id
+    data = request.body.read
+    redis.set("blip-#{id}", data)
+    {_id: id}.to_json
+  else
+    status 401
+  end
+
 end
