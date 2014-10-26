@@ -30,7 +30,6 @@ radar.segments = function () {
 
         update_with: function(segments){
           radar.data_store.update_segments(segments);
-          radar.data_store.save_data();
         },
 
         get_segment_at_coordinates: function(x,y) {

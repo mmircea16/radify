@@ -56,6 +56,14 @@ radar.data_store = (function () {
           console.log(segments);
         },
 
+        update_title: function (title) {
+          data.name = title;
+        },
+
+        get_title: function (){
+          return data.name;
+        },
+
         save_data: function () {
             if (get_radar_id() === 'new') {
                 $.ajax('/api/radar', {

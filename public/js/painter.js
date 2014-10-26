@@ -132,6 +132,7 @@ radar.painter = (function () {
             $(pair[1]).text(pair[0].segment_data.name);
         });
 
+        $('.radar_title').text(radar.data_store.get_title());
     }
 
     function enable_label_editing(segments){
@@ -143,7 +144,9 @@ radar.painter = (function () {
             var new_segments = segments.map(function (segment) {
                 return segment.segment_data
             });
-            radar.segments().update_with(new_segments)
+            radar.segments().update_with(new_segments);
+            radar.data_store.update_title($('.radar_title').text());
+            radar.data_store.save_data();
         });
     }
 

@@ -139,3 +139,13 @@ body{
     right: 100px;
     bottom: 0px;
 }
+
+.radar_title {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+}
+
+#update_segment_labels {
+    margin-left: -50px;
+}
