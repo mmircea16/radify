@@ -4,8 +4,6 @@ require 'json'
 require 'twitter'
 require 'omniauth-twitter'
 
-set :public_folder, 'resources/public'
-
 CONSUMER_KEY =  ENV['CONSUMER_KEY']
 CONSUMER_SECRET = ENV['CONSUMER_SECRET']
 configure do
@@ -30,7 +28,7 @@ get '/auth/twitter/callback' do
 end
 
 get '/' do
-  File.read(File.join(File.dirname(__FILE__), 'resources/public/html/index.html'))
+  File.read(File.join(File.dirname(__FILE__), 'public/html/index.html'))
 end
 
 get '/api/radar/:id' do
