@@ -1,2 +1,6 @@
-ssh -i /var/go/ssh_key root@104.131.74.12 'pkill java ; nohup java -jar /api/radify-0.1.0-SNAPSHOT-standalone.jar > /dev/null 2>/dev/null </dev/null  &'
+scp -i /var/go/ssh_key -r ./app.rb root@104.131.74.12:/radify/
+scp -i /var/go/ssh_key -r ./Gemfile root@104.131.74.12:/radify/
+scp -i /var/go/ssh_key -r ./config.ruroot@104.131.74.12:/radify/
+
+ssh -i /var/go/ssh_key root@104.131.74.12 ' pkill ruby ; unicorn /radify/config.ru  &'
 
