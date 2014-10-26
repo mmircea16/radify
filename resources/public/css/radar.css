@@ -37,11 +37,20 @@ body{
     float: left;
 }
 #add_blip_form {
+    width: 500px;
+    height: 300px;
+}
+
+#more_info {
+    width: 500px;
+    height: 300px;
+}
+
+.modal {
     background-color: #ffffff;
     z-index: 2000;
     display: none;
     position: absolute;
-    width: 500px;
     padding: 30px;
     top: 200px;
     left: 200px;
