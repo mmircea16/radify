@@ -135,17 +135,29 @@ radar.painter = (function () {
     }
 
     function add_more_info_to_blips() {
+        $('.blip').mouseenter(
+            function (event) {
+                $(this).attr('fill', 'red');
+            });
+
+        $('.blip').mouseleave(
+            function (event) {
+                $(this).attr('fill', 'green');
+            });
+
         $('.blip').on('click', function (event) {
+            $(this).attr('fill', 'red');
             more_info.show();
 
             var id = $(event.target).attr('id');
             var blip = radar.blips().get_blip_by_id(id);
 
+            console.log(blip);
             more_info.show_for_blip(blip);
 
             more_info.on_accept(function () {
-                blip.blip_data.name =  more_info.get_data().name;
-                blip.blip_data.description =  more_info.get_data().description;
+                blip.blip_data.name = more_info.get_data().name;
+                blip.blip_data.description = more_info.get_data().description;
                 blip.blip_data.tier = more_info.get_data().tier_id;
                 blip.tier_data = radar.tiers().get_by_id(more_info.get_data().tier_id);
                 radar.data_store.save_data();

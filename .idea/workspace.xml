@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b46c393d-3a58-4b00-82b9-74c4a7c17298" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/painter.js" afterPath="$PROJECT_DIR$/public/js/painter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/radify.iml" afterPath="$PROJECT_DIR$/.idea/radify.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="radify.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="painter.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/painter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35751978" vertical-offset="1895" max-vertical-offset="3268">
-              <caret line="114" column="18" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.4864865" vertical-offset="2528" max-vertical-offset="3496">
+              <caret line="152" column="19" selection-start-line="152" selection-start-column="19" selection-end-line="152" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -213,8 +211,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/public/js/painter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35751978" vertical-offset="1895" max-vertical-offset="3268">
-          <caret line="114" column="18" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.4864865" vertical-offset="2528" max-vertical-offset="3496">
+          <caret line="152" column="19" selection-start-line="152" selection-start-column="19" selection-end-line="152" selection-end-column="19" />
           <folding />
         </state>
       </provider>
