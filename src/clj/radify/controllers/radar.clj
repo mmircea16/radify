@@ -25,6 +25,7 @@
       (ring/response)))
 
 (defn save-radar [radar]
+  (println radar)
   (let [result (db/save-item radar)]
       (if (nil? result)
           error-saving
