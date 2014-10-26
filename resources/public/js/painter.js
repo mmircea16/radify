@@ -90,7 +90,7 @@ radar.painter = (function() {
 
     function apply_to_page() {
 
-        more_info = radar.modal('#more_info');
+        more_info = $('#more_info');
 
         var tiers = radar.tiers().get_all();
         var blips = radar.blips().get_all();
@@ -116,26 +116,21 @@ radar.painter = (function() {
     }
 
     function add_hover_to_blips() {
-        $('.blip').on('click', function(event){
+        $('.blip').on('mouseover', function(event){
            more_info.show();
-
            var id = $(event.target).attr('id');
            var blip = radar.blips().get_blip_by_id(id);
 
-           more_info.content().find('#name').text(blip.blip_data.name);
-           more_info.content().find('#description').text(blip.blip_data.description);
-
-            more_info.on_accept(function(){
-                console.log('accept');
-            });
+           console.log(id);
+           console.log(blip);
+           more_info.find('#name').text(blip.blip_data.name);
+           more_info.find('#description').text(blip.blip_data.description);
         });
 
-
-//        $('.blip').on('mouseout', function(){
-//            more_info.find('name').text('');
-//            more_info.hide();
-//            $('.cover').hide();
-//        });
+        $('.blip').on('mouseout', function(){
+            more_info.find('name').text('');
+            more_info.hide();
+        });
 
     }
 
