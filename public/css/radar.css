@@ -40,7 +40,7 @@ body{
     float: left;
 }
 #add_blip_form {
-    width: 500px;
+    width: 350px;
     height: 250px;
 }
 
@@ -56,10 +56,9 @@ body{
     position: absolute;
     padding: 30px;
     top: 200px;
-    left: 200px;
     border-radius: 20px;
     position: absolute;
-    left: 55%;
+    left: 5%;
 }
 
 .cover {
@@ -162,9 +161,12 @@ body{
     border-radius: 20px;
     width: 200px;
     z-index: 2000;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 #hover_title{
     text-align: center;
     margin-top: 0;
+    word-wrap: break-word;
 }
