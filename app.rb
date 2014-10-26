@@ -27,10 +27,29 @@ get '/auth/twitter/callback' do
   redirect to('/')
 end
 
+
+default_radar = {
+  id: "something",
+  name: "name of the radar" ,
+  description: "description of the radar",
+  template: {
+    id: "some-id",
+    segments: [{id:"id-segment", name:"techniques"}, {id:"some-id", name:"languages"}, {id:"languages", name:"languages"}, {id:"platforms", name:"platforms"}],
+    tiers: [{id:"hold", name:"hold", description: "something"}, {id:"assess", name:"assess", description: "something"}, {id:"trial", name:"trial", description: "something"}]
+  },
+  blips: []
+}
+
 get '/' do
   if session[:uid]
     redis = Redis.new
     id = redis.get("twitter-#{session[:uid]}")
+    if id.nil?
+      id = SecureRandom.hex(10)
+      data = default_radar.to_json
+      redis.set("blip-#{id}", data)
+      redis.set("twitter-#{session[:uid]}", id)
+    end
     redirect to("/radar/#{id}")
   else
     redirect to('/login')
