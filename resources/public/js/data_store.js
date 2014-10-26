@@ -51,7 +51,16 @@ radar.data_store = (function () {
         },
 
         save_data: function(){
-            console.log(data);
+            $.ajax('/api/radar', {
+                method: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json'
+            }).done(function(response){
+                if (get_radar_id() === 'new') {
+                    var current_url = location.href;
+                    location.href=current_url.split('#')[0] + '#' + response._id;
+                }
+            });
         }
     }
 
