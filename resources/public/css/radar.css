@@ -73,11 +73,16 @@ body{
 }
 
 #more_info #name {
-    font-size: 24px;
+    text-align: center;
+    font-size: 26px;
+    color: grey;
+    margin-bottom: 20px;
 }
 
 #more_info #description {
     font-size: 18px;
+    font-style: italic;
+    margin-bottom: 20px;
 }
 
 #more_info #tier{
@@ -85,12 +90,19 @@ body{
 }
 
 #more_info .tier_selector{
-    font-size: 16px;
+    font-size: 20px;
     display: block;
+    text-align: center;
 }
 
 #more_info .fa {
     cursor: pointer;
+    color: lightskyblue;
+}
+
+.modal_buttons {
+    margin-top: 20px;
+    text-align: center;
 }
 
 .blip {
