@@ -1,59 +1,62 @@
 <head>
- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
- <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
- <script src="../js/painter.js"></script>
- <script src="../js/tiers.js"></script>
- <script src="../js/blips.js"></script>
- <script src="../js/segments.js"></script>
- <script src="../js/utils.js"></script>
- <script src="../js/creator.js"></script>
- <script src="../js/main.js"></script>
- <script src="../js/data_store.js"></script>
- <script src="../dummy_contract.js"></script>
- <script src="../default_data.js"></script>
- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
- <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" media="screen" />
- <link rel="stylesheet" type="text/css" href="../css/radar.css" media="screen" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="../js/painter.js"></script>
+    <script src="../js/tiers.js"></script>
+    <script src="../js/blips.js"></script>
+    <script src="../js/segments.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/creator.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/data_store.js"></script>
+    <script src="../dummy_contract.js"></script>
+    <script src="../default_data.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../css/radar.css" media="screen"/>
 </head>
 
 <body>
-  <div id="header" class="container-fluid">
-    <div class="hidden-xs col-sm-1 col-md-2" ></div>
-       
-    <div class="col-md-8 col-xs-12 col-sm-10" >
-      <a id="title_link" class="title_left"  href="/"> Radify </a>
-      <a id="title_link" class="title_right" href="/login.html">Login</a>
-      <a id="title_link" class="title_right" href="/create.html">Create</a>
+<div id="header" class="container-fluid">
+    <div class="hidden-xs col-sm-1 col-md-2"></div>
+
+    <div class="col-md-8 col-xs-12 col-sm-10">
+        <a id="title_link" class="title_left" href="/"> Radify </a>
+        <a id="title_link" class="title_right" href="/login.html">Login</a>
+        <a id="title_link" class="title_right" href="/create.html">Create</a>
     </div>
 
-    <div class="hidden-xs col-sm-1 col-md-2" ></div>
-  </div>
-  <div class="cover"></div>
+    <div class="hidden-xs col-sm-1 col-md-2"></div>
+</div>
+<div class="cover"></div>
 
 <div class="container-fluid">
-  <div class="hidden-xs col-sm-1 col-md-2" ></div>
-  <div class="col-xs-10 col-sm-8 col-md-6" >
-
+    <div class="hidden-xs col-sm-1 col-md-2"></div>
+    <div class="col-xs-12 col-sm-10 col-md-8">
     <h1> Radify says "Hello Hack Manchester" </h1>
-      <form id="add_blip_form" role="form">
-          <div class="form-group">
-              <label for="blip_name">Name:</label>
-              <input class="form-control" id="blip_name" placeholder="Name of the blip">
-          </div>
-          <div class="form-group">
-              <label for="blip_description">Description:</label>
-              <input class="form-control" id="blip_description" placeholder="Description of the blip">
-          </div>
-          <button id="save_button" type="button" class="btn btn-default">Save</button>
-          <button id="cancel_button" type="button" class="btn btn-default">Cancel</button>
-      </form>
-      <svg id="radar_board"></svg>
+    <div class="col-xs-10 col-sm-8 col-md-6">
 
-  </div>
-  <div class="col-xs-2 col-sm-2 col-md-2" id="more_info">
+
+        <form id="add_blip_form" role="form">
+            <div class="form-group">
+                <label for="blip_name">Name:</label>
+                <input class="form-control" id="blip_name" placeholder="Name of the blip">
+            </div>
+            <div class="form-group">
+                <label for="blip_description">Description:</label>
+                <input class="form-control" id="blip_description" placeholder="Description of the blip">
+            </div>
+            <button id="save_button" type="button" class="btn btn-default">Save</button>
+            <button id="cancel_button" type="button" class="btn btn-default">Cancel</button>
+        </form>
+        <svg id="radar_board"></svg>
+
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2" id="more_info">
         <div id="name">Some name</div>
         <div id="description"></div>
-  </div>
-  <div class="hidden-xs col-sm-1 col-md-2" ></div>
+    </div>
+    </div>
+    <div class="hidden-xs col-sm-1 col-md-2"></div>
 </div>
 </body>
