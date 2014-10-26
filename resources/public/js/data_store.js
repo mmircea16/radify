@@ -7,14 +7,20 @@ radar.data_store = (function () {
     var data_retrieved_callback;
 
     function get_radar_id () {
-        return location.href.split('id=')[1]
+        return location.href.split('#')[1]
     }
 
     function start_retrieving_data() {
-        $.getJSON("/api/radar/"+get_radar_id(), "", function(response){
-            data = response;
+        console.log("/api/radar/"+get_radar_id());
+        if (get_radar_id() === 'new') {
+            data = default_data;
             data_retrieved_callback();
-        });
+        }else{
+            $.getJSON("/api/radar/"+get_radar_id(), "", function(response){
+                data = response;
+                data_retrieved_callback();
+            });
+        }
     }
 
     function get_data() {

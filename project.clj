@@ -8,7 +8,8 @@
                  [compojure "1.1.9"] ;; for routing
                  [ring "1.3.1"]
                  [ring/ring-json "0.2.0"] ;; for serializing
-                 [http-kit "2.1.19"]]
+                 [http-kit "2.1.19"]
+                 [com.ashafa/clutch "0.4.0"]] ;; CouchDB wrapper love :D
 
   :min-lein-version "2.0.0"
 
