@@ -14,10 +14,6 @@ configure do
 
 end
 
-get '/login' do
-  redirect to('/auth/twitter')
-end
-
 get '/auth/failure' do
   params[:message]
 end
@@ -40,7 +36,7 @@ default_radar = {
   blips: []
 }
 
-get '/' do
+get '/login' do
   if session[:uid]
     redis = Redis.new
     id = redis.get("twitter-#{session[:uid]}")
@@ -52,16 +48,16 @@ get '/' do
     end
     redirect to("/radar/#{id}")
   else
-    redirect to('/login')
+    redirect to('/auth/twitter')
   end
 
 end
 
 get '/radar/:id' do
-  File.read(File.join(File.dirname(__FILE__), 'public/html/index.html'))
+  File.read(File.join(File.dirname(__FILE__), 'public/html/radar.html'))
 end
 
-get '/main' do
+get '/' do
   File.read(File.join(File.dirname(__FILE__), 'public/html/main.html'))
 end
 
